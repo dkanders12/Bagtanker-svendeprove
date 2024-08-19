@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./SlideShow.scss";
-import screen1 from "../../assets/BackroundImg/Image1.jpg";
-import screen2 from "../../assets/BackroundImg/Image2.jpg";
-import screen3 from "../../assets/BackroundImg/Image3.jpeg";
-import screen4 from "../../assets/BackroundImg/Image4.jpg";
-import screen5 from "../../assets/BackroundImg/Image5.jpg";
+import screen1 from "../../../assets/BackroundImg/Image1.jpg";
+import screen2 from "../../../assets/BackroundImg/Image2.jpg";
+import screen3 from "../../../assets/BackroundImg/Image3.jpeg";
+import screen4 from "../../../assets/BackroundImg/Image4.jpg";
+import screen5 from "../../../assets/BackroundImg/Image5.jpg";
 
 const images = [screen1, screen2, screen3, screen4, screen5];
 
