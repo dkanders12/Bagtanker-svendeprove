@@ -1,0 +1,100 @@
+#radio {
+  position: absolute;
+  bottom: 59px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  z-index: 10;
+}
+
+#radio input {
+  width: 18px;
+  height: 18px;
+  appearance: none;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#radio input:checked {
+  background-color: black;
+  transform: scale(1.2);
+}
+
+#radio input:hover {
+  background-color: #ccc;
+}
+
+.sliders {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  transition: margin-left 1s;
+  position: relative;
+
+  .slide {
+    width: 100%;
+    display: none;
+    transition: 1s;
+  }
+
+  .slide.active {
+    display: block; // Vis kun den aktive slide
+  }
+
+  .manual-btn:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .navigation-auto div {
+    background-color: gray;
+    border: 3px solid gray;
+    padding: 9px;
+    border-radius: 13px;
+    transition: 0.4s;
+    display: none;
+  }
+
+  .navigation-auto div:hover {
+    background-color: gold;
+  }
+
+  .navigation-auto div:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  /* Slide transition styles */
+  #radio1:checked ~ .slider .sliders {
+    margin-left: 0;
+  }
+
+  #radio2:checked ~ .slider .sliders {
+    margin-left: -100%;
+  }
+
+  #radio3:checked ~ .slider .sliders {
+    margin-left: -200%;
+  }
+
+  #radio4:checked ~ .slider .sliders {
+    margin-left: -300%;
+  }
+
+  #radio5:checked ~ .slider .sliders {
+    margin-left: -400%;
+  }
+
+  #radio1:checked ~ .navigation-auto .auto-btn1,
+  #radio2:checked ~ .navigation-auto .auto-btn2,
+  #radio3:checked ~ .navigation-auto .auto-btn3,
+  #radio4:checked ~ .navigation-auto .auto-btn4,
+  #radio5:checked ~ .navigation-auto .auto-btn5 {
+    background-color: rgb(217, 219, 87);
+  }
+}
