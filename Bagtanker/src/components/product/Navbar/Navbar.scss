@@ -1,0 +1,26 @@
+#secondNavbar {
+  list-style-type: none;
+  display: flex;
+  position: absolute;
+  top: 180px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #323540;
+  height: 95px;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    font-size: 24px;
+    li a {
+      color: #f5f5f0;
+      padding-bottom: 20px;
+    }
+    a:hover {
+      color: #d89f5f;
+      border-bottom: 15px solid #d89f5f;
+    }
+  }
+}

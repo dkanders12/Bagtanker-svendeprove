@@ -1,10 +1,11 @@
 #forsideArticle {
-  width: 500px;
+  width: 550px;
   position: absolute;
   z-index: 10;
   color: white;
   top: 200px;
   left: 100px;
+  opacity: 0.9;
 
   h2 {
     color: black;
@@ -12,6 +13,19 @@
   #nyhedsContainer {
     background-color: #323540e5;
     border-radius: 10px;
-    padding: 20px;
+
+    .newsItem {
+      display: flex;
+      gap: 25px;
+      padding: 20px;
+      #small {
+        font-size: 13px;
+        color: #ffffff;
+      }
+      #nyhederImg {
+        width: 200px;
+        cursor: pointer;
+      }
+    }
   }
 }

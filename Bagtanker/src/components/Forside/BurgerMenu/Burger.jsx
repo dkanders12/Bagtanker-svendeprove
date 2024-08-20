@@ -21,7 +21,7 @@ const Burger = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="fix" to="/Hold" onClick={toggleMenu}>
+              <NavLink className="fix" to="/Rundstykker" onClick={toggleMenu}>
                 Produkter
               </NavLink>
             </li>

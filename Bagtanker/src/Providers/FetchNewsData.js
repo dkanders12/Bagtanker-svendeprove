@@ -7,11 +7,17 @@ export const fetchNewsData = async () => {
   const client = createClient(supabaseUrl, supabaseAnonKey);
 
   const { data, error } = await client.from("news").select("*");
+  const { data: imageData, error: imageError } = await client
+    .from("images")
+    .select("*");
 
-  if (error) {
-    console.error("Error fetching artists:", error.message);
-    return [];
+  if (error || imageError) {
+    console.error(
+      "Error fetching data:",
+      error?.message || imageError?.message
+    );
+    return { news: [], images: [] };
   }
 
-  return data || [];
+  return { news: data, images: imageData };
 };

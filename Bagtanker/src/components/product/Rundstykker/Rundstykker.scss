@@ -1,0 +1,10 @@
+#categoriesContainer {
+  position: absolute;
+  top: 270px;
+  background-color: #f5f5f0;
+  width: 100%;
+  z-index: 10;
+  .productItem {
+    width: 565px;
+  }
+}
