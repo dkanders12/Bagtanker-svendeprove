@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { fetchProductsData } from "../../../Providers/FetchProduktsData";
 import { fetchNewsData } from "../../../Providers/FetchNewsData";
 import Navbar from "../Navbar/Navbar";
-import "./Rundstykker.scss";
+import "../Rundstykker/Rundstykker.scss";
 import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 
-const Rundstykker = ({ limit = 2 }) => {
+const Kager = ({ limit = 6 }) => {
   const [categories, setCategories] = useState([]);
   const [images, setImages] = useState([]);
 
@@ -36,11 +36,9 @@ const Rundstykker = ({ limit = 2 }) => {
       <section id="Rundstykker">
         {categories.length ? (
           <article id="categoriesContainer">
-            <h2>Rundstykker</h2>
+            <h2>Kager</h2>
             {categories
-              .filter(({ title }) =>
-                ["Morgenbrød", "Grovbrød", "Boller"].includes(title)
-              )
+              .filter(({ title }) => ["Kager"].includes(title))
               .map(({ products }, categoryIdx) => (
                 <div key={categoryIdx} className="category">
                   {products.length ? (
@@ -87,4 +85,4 @@ const Rundstykker = ({ limit = 2 }) => {
   );
 };
 
-export default Rundstykker;
+export default Kager;
