@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { fetchProductsData } from "../../../Providers/FetchProduktsData";
 import { fetchNewsData } from "../../../Providers/FetchNewsData";
 import Navbar from "../Navbar/Navbar";
-import "./Rundstykker.scss";
+import "../Rundstykker/Rundstykker.scss";
 import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 
-const Rundstykker = ({ limit = 2 }) => {
+const Baguettes = ({ limit = 6 }) => {
   const [categories, setCategories] = useState([]);
   const [images, setImages] = useState([]);
-  const [sortDirection, setSortDirection] = useState("asc"); // "asc" for korteste først, "desc" for længste først
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,41 +30,19 @@ const Rundstykker = ({ limit = 2 }) => {
     return products.sort(() => 0.5 - Math.random()).slice(0, limit);
   };
 
-  const sortProducts = (products) => {
-    return [...products].sort((a, b) => {
-      if (sortDirection === "asc") {
-        return a.title.length - b.title.length;
-      } else {
-        return b.title.length - a.title.length;
-      }
-    });
-  };
-
-  const handleSortClick = () => {
-    setSortDirection((prevDirection) =>
-      prevDirection === "asc" ? "desc" : "asc"
-    );
-  };
-
   return (
     <>
       <Navbar />
       <section id="Rundstykker">
         {categories.length ? (
           <article id="categoriesContainer">
-            <h2>Rundstykker</h2>
-            <button onClick={handleSortClick}>
-              Sorter
-              {sortDirection === "asc" ? "+" : "-"}
-            </button>
+            <h2>Baguettes</h2>
             {categories
-              .filter(({ title }) =>
-                ["Morgenbrød", "Grovbrød", "Boller"].includes(title)
-              )
+              .filter(({ title }) => ["Baguettes"].includes(title))
               .map(({ products }, categoryIdx) => (
                 <div key={categoryIdx} className="category">
                   {products.length ? (
-                    sortProducts(shuffleAndLimitProducts(products)).map(
+                    shuffleAndLimitProducts(products).map(
                       ({ id, title, teaser }, productIdx) => (
                         <div key={id} className="productItem">
                           <div>
@@ -108,4 +85,4 @@ const Rundstykker = ({ limit = 2 }) => {
   );
 };
 
-export default Rundstykker;
+export default Baguettes;
