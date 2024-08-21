@@ -8,6 +8,7 @@ import Rugbrød from "./components/product/Rugbrød/Rugbrød";
 import Kager from "./components/product/Kager/Kager";
 import Franskbrød from "./components/product/Franskbrød/Franskbrød";
 import Baguettes from "./components/product/Baguettes/Baguettes";
+import ProductDetail from "./components/product/Details/ProductDetails";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/Kager" element={<Kager />}></Route>
         <Route path="/Franskbrød" element={<Franskbrød />}></Route>
         <Route path="/Baguettes" element={<Baguettes />}></Route>
+        <Route path="/products/:id" element={<ProductDetail />}></Route>
       </Routes>
     </>
   );
