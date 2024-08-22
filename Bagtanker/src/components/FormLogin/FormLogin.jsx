@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../Login/Login.controller"; // Make sure this path is correct
+import { supabase } from "../../Providers/LoginContoller"; // Make sure this path is correct
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
@@ -37,7 +37,7 @@ const LoginForm = () => {
       if (data.session) {
         localStorage.setItem("access_token", data.session.access_token);
         console.log(localStorage);
-        navigate("/FetchSupa");
+        navigate("/minSide");
       }
     } catch (err) {
       console.error("Unexpected error during login:", err);
