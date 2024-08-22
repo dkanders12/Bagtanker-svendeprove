@@ -5,6 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import "../Rundstykker/Rundstykker.scss";
 import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
+import Footer from "../../Forside/Footer/Footer";
 
 const Baguettes = ({ limit = 6 }) => {
   const [categories, setCategories] = useState([]);
@@ -75,7 +76,8 @@ const Baguettes = ({ limit = 6 }) => {
                     <li>No products available.</li>
                   )}
                 </div>
-              ))}
+              ))}{" "}
+            <Footer></Footer>
           </article>
         ) : (
           <p>Loading...</p>

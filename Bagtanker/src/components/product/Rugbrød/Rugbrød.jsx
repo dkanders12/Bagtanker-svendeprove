@@ -5,6 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import "../Rundstykker/Rundstykker.scss";
 import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
+import Footer from "../../Forside/Footer/Footer";
 
 const Rugbrød = ({ limit = 4 }) => {
   const [categories, setCategories] = useState([]);
@@ -76,6 +77,7 @@ const Rugbrød = ({ limit = 4 }) => {
                   )}
                 </div>
               ))}
+            <Footer></Footer>
           </article>
         ) : (
           <p>Loading...</p>

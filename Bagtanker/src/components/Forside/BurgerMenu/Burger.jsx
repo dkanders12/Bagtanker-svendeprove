@@ -26,17 +26,17 @@ const Burger = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="fix" to="/Indmeld" onClick={toggleMenu}>
+              <NavLink className="fix" to="/News/:id" onClick={toggleMenu}>
                 Nyheder
               </NavLink>
             </li>
             <li>
-              <NavLink className="fix" to="/Bestyr" onClick={toggleMenu}>
+              <NavLink className="fix" to="/Kontakt" onClick={toggleMenu}>
                 Kontakt
               </NavLink>
             </li>
             <li>
-              <NavLink className="fix" to="/WebShop" onClick={toggleMenu}>
+              <NavLink className="fix" to="/Login" onClick={toggleMenu}>
                 Login
               </NavLink>
             </li>

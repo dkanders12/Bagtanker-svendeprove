@@ -5,6 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import "./Rundstykker.scss";
 import { NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
+import Footer from "../../Forside/Footer/Footer";
 
 const Rundstykker = ({ limit = 2 }) => {
   const [categories, setCategories] = useState([]);
@@ -98,7 +99,8 @@ const Rundstykker = ({ limit = 2 }) => {
                     <li>No products available.</li>
                   )}
                 </div>
-              ))}
+              ))}{" "}
+            <Footer></Footer>
           </article>
         ) : (
           <p>Loading...</p>

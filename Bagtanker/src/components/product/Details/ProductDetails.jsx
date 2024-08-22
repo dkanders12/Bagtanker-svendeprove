@@ -5,6 +5,7 @@ import { fetchNewsData } from "../../../Providers/FetchNewsData";
 import { CiHeart } from "react-icons/ci";
 import Navbar from "../Navbar/Navbar";
 import "./ProductDetails.scss";
+import Footer from "../../Forside/Footer/Footer";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -36,7 +37,6 @@ const ProductDetail = () => {
     <>
       <Navbar />
       <section className="product-detail-container">
-        {" "}
         <h1>{product.title}</h1>
         <article className="two-column-layout">
           <div className="left-column">
@@ -72,7 +72,7 @@ const ProductDetail = () => {
               </li>
               {product.ingredients.map((ingredient) => (
                 <li id="edit-text" key={ingredient.id}>
-                  {ingredient.amount} {ingredient.unitAbbreviation}{" "}
+                  {ingredient.amount} {ingredient.unitAbbreviation}
                   {ingredient.title}
                 </li>
               ))}
@@ -80,6 +80,7 @@ const ProductDetail = () => {
           </div>
           <p className="product-price">Pris: {product.price} DKK</p>
         </article>
+        <Footer></Footer>
       </section>
     </>
   );

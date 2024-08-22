@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { fetchNewsData } from "../../../Providers/FetchNewsData";
 import "./Nyheder.scss";
 
 const FetchNyheder = ({ limit = 3 }) => {
   const [NyhederData, setNyhederData] = useState([]);
   const [ImageData, setImageData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +23,10 @@ const FetchNyheder = ({ limit = 3 }) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  const handleImageClick = (id) => {
+    navigate(`/News/${id}`);
+  };
+
   return (
     <article id="forsideArticle">
       <h2>Nyheder</h2>
@@ -33,7 +39,9 @@ const FetchNyheder = ({ limit = 3 }) => {
                   id="nyhederImg"
                   src={ImageData[index].filename}
                   className="newsImage"
-                  link="/News"
+                  alt={news.title}
+                  onClick={() => handleImageClick(news.id)}
+                  style={{ cursor: "pointer" }}
                 />
               )}
               <div>
