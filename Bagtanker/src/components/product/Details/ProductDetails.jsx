@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchProductById } from "../../../Providers/ProductId";
 import { fetchNewsData } from "../../../Providers/FetchNewsData";
+import { CiHeart } from "react-icons/ci";
 import Navbar from "../Navbar/Navbar";
 import "./ProductDetails.scss";
 
@@ -28,28 +29,41 @@ const ProductDetail = () => {
 
   if (!product) return <div>Loading...</div>;
 
+  const teaserDescription =
+    product.description.split(" ").slice(0, 100).join(" ") + "...";
+
   return (
     <>
       <Navbar />
-      <article className="product-detail-container">
-        <div className="left-column">
-          <h1>{product.title}</h1>
-          {image && (
-            <img
-              src={image.filename}
-              alt={product.title}
-              className="product-image"
-            />
-          )}
-          <div className="product-description">
-            <p>{product.description}</p>
+      <section className="product-detail-container">
+        {" "}
+        <h1>{product.title}</h1>
+        <article className="two-column-layout">
+          <div className="left-column">
+            {image && (
+              <img
+                src={image.filename}
+                alt={product.title}
+                className="product-image"
+              />
+            )}
           </div>
-          <p className="product-price">Pris: {product.price} DKK</p>
-        </div>
-        <div className="right-column">
-          <div className="ingredients-header">Opskrift</div>
+          <div className="right-column">
+            <p className="product-teaser">{product.teaser}</p>
+            <p className="product-description">{teaserDescription}</p>
+          </div>
+        </article>
+        <article className="full-width-section">
+          <p>{product.description.substring(teaserDescription.length)}</p>
+
           <div className="ingredients-details">
-            <ul>
+            <ul id="top-right">
+              <div className="opskrift-header">
+                <h2>Opskrift</h2>
+                <p>
+                  324 <CiHeart></CiHeart>
+                </p>
+              </div>
               <li>
                 <strong>Varighed:</strong> {product.duration}
               </li>
@@ -57,15 +71,16 @@ const ProductDetail = () => {
                 <strong>Antal:</strong> {product.amount}
               </li>
               {product.ingredients.map((ingredient) => (
-                <li key={ingredient.id}>
+                <li id="edit-text" key={ingredient.id}>
                   {ingredient.amount} {ingredient.unitAbbreviation}{" "}
                   {ingredient.title}
                 </li>
               ))}
             </ul>
           </div>
-        </div>
-      </article>
+          <p className="product-price">Pris: {product.price} DKK</p>
+        </article>
+      </section>
     </>
   );
 };

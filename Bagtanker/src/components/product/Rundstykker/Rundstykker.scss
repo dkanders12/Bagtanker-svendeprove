@@ -15,10 +15,10 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    max-height: 100vh; /* Limit the height to the viewport */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 100vh;
+    overflow-y: auto;
     padding: 20px;
-    width: 80%;
+    width: 100%;
     justify-content: center;
     gap: 40px;
     a {
