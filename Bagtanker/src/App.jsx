@@ -23,7 +23,7 @@ function App() {
         <Route path="/Franskbrød" element={<Franskbrød />}></Route>
         <Route path="/Baguettes" element={<Baguettes />}></Route>
         <Route path="/products/:id" element={<ProductDetail />}></Route>
-        <Route path="/News/:id" element={<NyhederSite />} /> {/* New Route */}
+        <Route path="/News/:id" element={<NyhederSite />} />
       </Routes>
     </>
   );
