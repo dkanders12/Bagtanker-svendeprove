@@ -1,0 +1,106 @@
+#radio {
+  position: absolute;
+  bottom: 59px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  z-index: 10;
+}
+
+#radio input {
+  width: 18px;
+  height: 18px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#radio input:checked {
+  background-color: black;
+  transform: scale(1.2);
+}
+
+#radio input:hover {
+  background-color: #ccc;
+}
+
+.slider {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.sliders {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease-in-out;
+}
+
+.slide {
+  min-width: 100%; /* Ensures each slide takes up the full container width */
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.manual-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.navigation-auto div {
+  background-color: gray;
+  border: 3px solid gray;
+  padding: 9px;
+  border-radius: 13px;
+  transition: 0.4s;
+  display: none;
+}
+
+.navigation-auto div:hover {
+  background-color: gold;
+}
+
+.navigation-auto div:not(:last-child) {
+  margin-right: 20px;
+}
+
+/* Slide transition styles */
+#radio1:checked ~ .slider .sliders {
+  transform: translateX(0%);
+}
+
+#radio2:checked ~ .slider .sliders {
+  transform: translateX(-100%);
+}
+
+#radio3:checked ~ .slider .sliders {
+  transform: translateX(-200%);
+}
+
+#radio4:checked ~ .slider .sliders {
+  transform: translateX(-300%);
+}
+
+#radio5:checked ~ .slider .sliders {
+  transform: translateX(-400%);
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1,
+#radio2:checked ~ .navigation-auto .auto-btn2,
+#radio3:checked ~ .navigation-auto .auto-btn3,
+#radio4:checked ~ .navigation-auto .auto-btn4,
+#radio5:checked ~ .navigation-auto .auto-btn5 {
+  background-color: rgb(217, 219, 87);
+}/*# sourceMappingURL=SlideShow.css.map */

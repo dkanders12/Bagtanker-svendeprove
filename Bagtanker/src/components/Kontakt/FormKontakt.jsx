@@ -28,7 +28,7 @@ const kontaktForm = () => {
   };
 
   return (
-    <div className="contact-form">
+    <article className="contact-form">
       <h1>kontakt os</h1>
       <p>
         Udfyld og send formularen og vi vil hurtist muligt besvare dine
@@ -64,7 +64,7 @@ const kontaktForm = () => {
         <button type="submit">Send</button>
       </form>
       {status && <p>{status}</p>}
-    </div>
+    </article>
   );
 };
 

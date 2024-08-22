@@ -1,8 +1,15 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  width: 500px;
-
+  width: 450px;
+  align-items: start;
+  h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+  p {
+    margin-bottom: 5px;
+  }
   form {
     align-items: end;
     display: flex;
@@ -30,6 +37,8 @@
       height: 30px;
       border: none;
       border-radius: 5px;
+      background-color: #5f657b;
+      color: #ffff;
     }
   }
 }

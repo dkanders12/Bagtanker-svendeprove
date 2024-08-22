@@ -1,0 +1,23 @@
+#container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 180px;
+  background-color: white;
+  gap: 40px;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#container #fix {
+  display: flex;
+  padding: 50px;
+}
+#container .leaflet-map {
+  width: 500px;
+  height: 500px;
+  margin: 20px auto;
+  overflow: hidden;
+  border: 1px solid black;
+}/*# sourceMappingURL=KontaktSide.css.map */

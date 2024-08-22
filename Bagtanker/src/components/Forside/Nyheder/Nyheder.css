@@ -1,0 +1,29 @@
+#forsideArticle {
+  width: 550px;
+  position: absolute;
+  z-index: 10;
+  color: white;
+  top: 170px;
+  left: 100px;
+  opacity: 0.9;
+}
+#forsideArticle h2 {
+  color: black;
+}
+#forsideArticle #nyhedsContainer {
+  background-color: rgba(50, 53, 64, 0.8980392157);
+  border-radius: 10px;
+}
+#forsideArticle #nyhedsContainer .newsItem {
+  display: flex;
+  gap: 25px;
+  padding: 20px;
+}
+#forsideArticle #nyhedsContainer .newsItem #small {
+  font-size: 13px;
+  color: #ffffff;
+}
+#forsideArticle #nyhedsContainer .newsItem #nyhederImg {
+  width: 180px;
+  cursor: pointer;
+}/*# sourceMappingURL=Nyheder.css.map */
