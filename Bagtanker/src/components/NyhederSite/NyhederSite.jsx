@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { fetchNewsData } from "../../Providers/FetchNewsData";
+import "./NyhederSite.scss";
 
 const NewsDetail = () => {
   const { id } = useParams();
-  const [newsItem, setNewsItem] = useState(null);
+  const navigate = useNavigate();
+  const [newsData, setNewsData] = useState([]);
+  const [currentNews, setCurrentNews] = useState(null);
+  const [currentImage, setCurrentImage] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const { news } = await fetchNewsData();
+      const { news, images } = await fetchNewsData();
+      setNewsData(news);
+
       const foundItem = news.find((item) => item.id === id);
-      setNewsItem(foundItem);
+      setCurrentNews(foundItem);
+
+      // Assuming `foundItem.image_id` is the field linking to the image
+      if (foundItem && foundItem.image_id) {
+        const foundImage = images.find((img) => img.id === foundItem.image_id);
+        setCurrentImage(foundImage);
+      }
     };
 
     fetchData();
@@ -21,21 +33,39 @@ const NewsDetail = () => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  if (!newsItem) return <p>Loading...</p>;
+  const handleNewsClick = (newsId) => {
+    navigate(`/News/${newsId}`);
+  };
+
+  if (!currentNews) return <p>Loading...</p>;
 
   return (
-    <section>
+    <section id="news-detail">
       <article id="left-bar">
-        <h1>{newsItem.title}</h1>
-        <p>{newsItem.content}</p>
-        <p>{formatDate(newsItem.created_at)}</p>
+        <h1>{currentNews.title}</h1>
+        {currentImage && (
+          <img
+            src={currentImage.filename}
+            alt={currentNews.title}
+            className="news-detail-image"
+          />
+        )}
+        <p>{currentNews.content}</p>
+        <p>{formatDate(currentNews.created_at)}</p>
       </article>
       <article id="right-bar">
-        <div>
-          <p id="small">{formatDate(newsItem.created_at)}</p>
-          <h3>{newsItem.title}</h3>
-          <p>{newsItem.teaser}</p>
-        </div>
+        {newsData.slice(0, 5).map((newsItem) => (
+          <div
+            key={newsItem.id}
+            className="related-news"
+            onClick={() => handleNewsClick(newsItem.id)}
+            style={{ cursor: "pointer" }}
+          >
+            <p id="small">{formatDate(newsItem.created_at)}</p>
+            <h3>{newsItem.title}</h3>
+            <p>{newsItem.teaser}</p>
+          </div>
+        ))}
       </article>
     </section>
   );
