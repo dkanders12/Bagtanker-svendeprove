@@ -30,71 +30,75 @@
   background-color: #ccc;
 }
 
-.sliders {
+.slider {
   width: 100%;
   height: 100vh;
-  display: flex;
-  transition: margin-left 1s;
+  overflow: hidden;
   position: relative;
+}
 
-  .slide {
-    width: 100%;
-    display: none;
-    transition: 1s;
-  }
+.sliders {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease-in-out;
+}
 
-  .slide.active {
-    display: block; // Vis kun den aktive slide
-  }
+.slide {
+  min-width: 100%; /* Ensures each slide takes up the full container width */
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
 
-  .manual-btn:hover {
-    background-color: black;
-    color: white;
-  }
+.manual-btn:hover {
+  background-color: black;
+  color: white;
+}
 
-  .navigation-auto div {
-    background-color: gray;
-    border: 3px solid gray;
-    padding: 9px;
-    border-radius: 13px;
-    transition: 0.4s;
-    display: none;
-  }
+.navigation-auto div {
+  background-color: gray;
+  border: 3px solid gray;
+  padding: 9px;
+  border-radius: 13px;
+  transition: 0.4s;
+  display: none;
+}
 
-  .navigation-auto div:hover {
-    background-color: gold;
-  }
+.navigation-auto div:hover {
+  background-color: gold;
+}
 
-  .navigation-auto div:not(:last-child) {
-    margin-right: 20px;
-  }
+.navigation-auto div:not(:last-child) {
+  margin-right: 20px;
+}
 
-  /* Slide transition styles */
-  #radio1:checked ~ .slider .sliders {
-    margin-left: 0;
-  }
+/* Slide transition styles */
+#radio1:checked ~ .slider .sliders {
+  transform: translateX(0%);
+}
 
-  #radio2:checked ~ .slider .sliders {
-    margin-left: -100%;
-  }
+#radio2:checked ~ .slider .sliders {
+  transform: translateX(-100%);
+}
 
-  #radio3:checked ~ .slider .sliders {
-    margin-left: -200%;
-  }
+#radio3:checked ~ .slider .sliders {
+  transform: translateX(-200%);
+}
 
-  #radio4:checked ~ .slider .sliders {
-    margin-left: -300%;
-  }
+#radio4:checked ~ .slider .sliders {
+  transform: translateX(-300%);
+}
 
-  #radio5:checked ~ .slider .sliders {
-    margin-left: -400%;
-  }
+#radio5:checked ~ .slider .sliders {
+  transform: translateX(-400%);
+}
 
-  #radio1:checked ~ .navigation-auto .auto-btn1,
-  #radio2:checked ~ .navigation-auto .auto-btn2,
-  #radio3:checked ~ .navigation-auto .auto-btn3,
-  #radio4:checked ~ .navigation-auto .auto-btn4,
-  #radio5:checked ~ .navigation-auto .auto-btn5 {
-    background-color: rgb(217, 219, 87);
-  }
+#radio1:checked ~ .navigation-auto .auto-btn1,
+#radio2:checked ~ .navigation-auto .auto-btn2,
+#radio3:checked ~ .navigation-auto .auto-btn3,
+#radio4:checked ~ .navigation-auto .auto-btn4,
+#radio5:checked ~ .navigation-auto .auto-btn5 {
+  background-color: rgb(217, 219, 87);
 }

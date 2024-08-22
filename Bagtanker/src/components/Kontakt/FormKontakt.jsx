@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-
+import "./FormKontakt.scss";
 const supabaseUrl = "https://bvuhlmojkmmydcepmwpf.supabase.co";
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
@@ -29,11 +29,15 @@ const kontaktForm = () => {
 
   return (
     <div className="contact-form">
-      <h1>Contact Us</h1>
+      <h1>kontakt os</h1>
+      <p>
+        Udfyld og send formularen og vi vil hurtist muligt besvare dine
+        spørgsmål.
+      </p>
       <form onSubmit={handleSubmit}>
         <label>
-          Name:
           <input
+            placeholder="name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -41,8 +45,8 @@ const kontaktForm = () => {
           />
         </label>
         <label>
-          Email:
           <input
+            placeholder="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -50,14 +54,14 @@ const kontaktForm = () => {
           />
         </label>
         <label>
-          Message:
           <textarea
+            placeholder="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Send Message</button>
+        <button type="submit">Send</button>
       </form>
       {status && <p>{status}</p>}
     </div>

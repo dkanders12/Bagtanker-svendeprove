@@ -12,61 +12,52 @@ export const BackRoundSlide = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    const totalSlides = images.length;
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
+    }, 5000); // Change slide every 5 seconds
 
-    const autoSlide = () => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    };
-
-    const intervalId = setInterval(autoSlide, 5000);
-
-    return () => clearInterval(intervalId);
+    return () => clearInterval(interval); // Clean up the interval on component unmount
   }, []);
 
   return (
     <section id="backround">
       <div className="slider">
-        <div className="sliders">
-          {images.map((image, i) => (
+        <div
+          className="sliders"
+          style={{
+            transform: `translateX(-${currentSlide * 100}%)`,
+          }}
+        >
+          {images.map((image, index) => (
             <div
-              key={i}
-              className={`slide ${i === currentSlide ? "active" : ""}`}
+              key={index}
+              className="slide"
               style={{
                 backgroundImage: `url(${image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "100%", // Juster højden efter behov
-                width: "100%", // Juster bredden efter behov
               }}
             ></div>
           ))}
-          <div className="navigation-auto">
-            {Array.from({ length: images.length }, (_, i) => (
-              <div key={i} className={`auto-btn${i + 1}`}></div>
-            ))}
-          </div>
         </div>
-        <div className="navigation-manual">
-          {Array.from({ length: images.length }, (_, i) => (
-            <label
-              key={i}
-              htmlFor={`radio${i + 1}`}
-              className="manual-btn"
-            ></label>
-          ))}
-        </div>{" "}
       </div>
-
       <div id="radio">
-        {Array.from({ length: images.length }, (_, i) => (
+        {images.map((_, index) => (
           <input
-            key={i}
+            key={index}
             type="radio"
             name="radio-btn"
-            id={`radio${i + 1}`}
-            checked={i === currentSlide}
-            onChange={() => setCurrentSlide(i)}
+            id={`radio${index + 1}`}
+            checked={currentSlide === index}
+            onChange={() => setCurrentSlide(index)}
           />
+        ))}
+      </div>
+      <div className="navigation-auto">
+        {images.map((_, index) => (
+          <div
+            key={index}
+            className={`auto-btn${index + 1}`}
+            onClick={() => setCurrentSlide(index)}
+          ></div>
         ))}
       </div>
     </section>
