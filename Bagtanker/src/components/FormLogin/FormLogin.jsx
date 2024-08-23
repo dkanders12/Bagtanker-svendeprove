@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../Providers/LoginContoller"; // Make sure this path is correct
 import { useNavigate } from "react-router-dom";
-
+import "./FormLogin.scss";
+import Footer from "../../components/Forside/Footer/Footer";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,35 +54,42 @@ const LoginForm = () => {
 
   return (
     <>
-      {user ? (
-        <div>
-          Welcome, {user.email} <button onClick={handleLogout}>Log out</button>
-        </div>
-      ) : (
-        <form onSubmit={handleLogin}>
+      <article id="LoginContainer">
+        <div id="LoginFix">
           <h2>Log in</h2>
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          <div>
-            <label>Email:</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label>Password:</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit">Log in</button>
-        </form>
-      )}
+          <p>Indtast og send username og password for at logge ind.</p>
+          {user ? (
+            <div>
+              Welcome, {user.email}{" "}
+              <button onClick={handleLogout}>Log out</button>
+            </div>
+          ) : (
+            <form onSubmit={handleLogin}>
+              {error && <p style={{ color: "red" }}>{error}</p>}
+              <div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Indtast dit brugernanvn"
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="Indtast dit password"
+                />
+              </div>
+              <button type="submit">Log in</button>
+            </form>
+          )}
+        </div>
+        <Footer></Footer>
+      </article>{" "}
     </>
   );
 };

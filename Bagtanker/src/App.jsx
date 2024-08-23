@@ -7,11 +7,11 @@ import Rugbrød from "./components/Product/Rugbrød/Rugbrød";
 import Kager from "./components/Product/Kager/Kager";
 import Franskbrød from "./components/Product/Franskbrød/Franskbrød";
 import Baguettes from "./components/Product/Baguettes/Baguettes";
-import ProductDetail from "./components/product/Details/ProductDetails";
+import ProductDetail from "./components/Product/Details/ProductDetails";
 import NyhederSite from "./components/NyhederSite/NyhederSite";
 import Kontaktside from "./Pages/KontaktSide/KontaktSide";
 import Login from "./Pages/Login/Login";
-import minSide from "./components/minSide/minSide";
+import UserComments from "./components/minSide/minSide";
 function App() {
   return (
     <>
@@ -28,7 +28,7 @@ function App() {
         <Route path="/News/:id" element={<NyhederSite />} />
         <Route path="/Kontakt" element={<Kontaktside />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/minSide" element={<minSide />} />
+        <Route path="/minSide" element={<UserComments />} />
       </Routes>
     </>
   );

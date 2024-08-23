@@ -6,13 +6,21 @@ import { CiHeart } from "react-icons/ci";
 import Navbar from "../Navbar/Navbar";
 import "./ProductDetails.scss";
 import Footer from "../../Forside/Footer/Footer";
+import Comments from "../../Comment/Comment";
+import { supabase } from "../../../Providers/LoginContoller";
 
 const ProductDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // This is your productId
   const [product, setProduct] = useState(null);
   const [image, setImage] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
+    const fetchUser = async () => {
+      const { data: user } = await supabase.auth.getUser();
+      setCurrentUser(user);
+    };
+
     const getProduct = async () => {
       const productData = await fetchProductById(id);
       if (productData) {
@@ -25,6 +33,7 @@ const ProductDetail = () => {
       }
     };
 
+    fetchUser();
     getProduct();
   }, [id]);
 
@@ -79,6 +88,8 @@ const ProductDetail = () => {
             </ul>
           </div>
           <p className="product-price">Pris: {product.price} DKK</p>
+
+          {currentUser && <Comments productId={id} user={currentUser} />}
         </article>
         <Footer></Footer>
       </section>
